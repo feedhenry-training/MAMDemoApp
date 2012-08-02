@@ -6,7 +6,7 @@ loading the local config and binding a click event to invoke the cloud action
 call which will return the remote config.
 */
 
-var CLIENT_TOKEN = "";
+var CLIENT_TOKEN = "SO--llacfmTrh8sucKFlWzXg";
 
 $fh.ready(function() {
   $('#login_btn').live('click', function(){
