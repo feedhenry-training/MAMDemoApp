@@ -5,7 +5,7 @@
     <h1> Choose Login Account </h1>
   </div>
   <ul data-role="listview">
-  	<li><a href="#first_page"><img src="css/images/auth_feedhenry.png"></img><h3>FeedHenry</h3><p>Login with your FeedHenry account</p></a></li>
+  	<li><a href="#login_page"><img src="css/images/auth_feedhenry.png"></img><h3>FeedHenry</h3><p>Login with your FeedHenry account</p></a></li>
   	<li><a href="javascript:doGoogleLogin()"><img src="css/images/auth_google.png"></img><h3>Google</h3><p>Login with your Google account</p></a></li>
   </ul>
 </div>
@@ -46,14 +46,14 @@
 			  <textarea name="login_explain" id="login_explain" readonly="readonly"></textarea>
 		  </div>
 		  <div data-role="fieldcontainer" class="hidden" id="show_edit_data">
-		    <a href="javascript:void(0)" data-role="button" id="data_btn" class="ui-btn-right">Edit Data</a>
+		    <a href="#data_page" data-role="button" id="data_btn" class="ui-btn-right">Edit Data</a>
       </div>
 		</form>
 	</div>
 </div>
 
 <div data-role="page" id="data_page">
- <div data-role="header" data-position="inline" data-backbtn="false">
+ <div data-role="header" data-position="inline" >
    <h1>View Data</h1>
    <a href="javascript:void(0)" id="logout_btn" class="ui-btn-right" data-theme="b">Logout</a>
  </div>

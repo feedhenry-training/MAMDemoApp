@@ -38,7 +38,7 @@ $fh.ready(function() {
     })
   });
   $('#logout_btn').bind('click', function(){
-    $.mobile.changePage($('#login_choose'), "slide", true);
+    $.mobile.changePage($('#login_choose'), {"transition":"slide", "changeHash":true});
   })
 });
 
@@ -81,17 +81,14 @@ var doFeedhenryLogin = function(){
 }
 
 var handleLoginSuccess = function(res){
-  $.mobile.changePage($('#result_page'), "slide", true);
+  $.mobile.changePage($('#result_page'),  {"transition":"slide", "changeHash":true});
   $("#result_status").val("Sucess");
   $("#login_explain").text(JSON.stringify(res));
-  $("#show_edit_data").show()
-  $("#data_btn").unbind("click").bind("click", function(){
-    $.mobile.changePage($("#data_page"), "slide", true);
-  })
+  $("#show_edit_data").show();
 }
 
 var handleLoginFailure = function(res){
-  $.mobile.changePage($('#result_page'), "slide", true);
+  $.mobile.changePage($('#result_page'),  {"transition":"slide", "changeHash":true});
   $("#result_status").val("Failure");
   $("#show_edit_data").hide();
   var text = "Login Failed. Error Message is : \n";
