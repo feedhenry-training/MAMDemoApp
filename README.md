@@ -15,7 +15,7 @@ In this app, users can be authenticated by using their Google account or FeedHen
 1. Login to the mobile application management page, click on "Auth Policies" link on the left hand side of the page, you will see a list of auth policies. 
 2. Click on the "Create" button to create a new auth policy.
 3. Name the policy "MyFeedHenryPolicy", and choose the type to be "FEEDHENRY" and save.
-4. Create another policy, name it "MyGooglePolicy" and choose the type to be "OAUTH2". To use google OAuth, you need to authorise API access by using [Google APIs Console](https://code.google.com/apis/console/). More details about this can be found [here](http://docs.feedhenry.com/v1/oauth_info.html).
+4. Create another policy, name it "MyGooglePolicy" and choose the type to be "OAUTH2". To use google OAuth, you need to authorise API access by using [Google APIs Console](https://code.google.com/apis/console/). More details about this can be found [here](http://docs.feedhenry.com/v2/authadmin_oauth.html).
 
 ## Create the app
 
@@ -40,3 +40,10 @@ Using the App
 Once the app is installed, you can update the auth policies and see the impact of the changes by login from the device. Everytime when a user tries to login to the platform, the app will show the result of the login and the detailed response on the second page. 
 
 If the user login successfully, he/she will be able to store data to the device. If you send the "Kill Pill" signal by either marking data purge for the user or the device, the stored data will be deleted.  
+
+References
+============
+
+* [FeedHenry User Management Doc](http://docs.feedhenry.com/v2/useradmin.html)
+* [FeedHenry Auth Policy Management Doc](http://docs.feedhenry.com/v2/authadmin.html)
+* [FeedHenry Mobile Application Management Doc](http://docs.feedhenry.com/v2/mamadmin.html)

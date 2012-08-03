@@ -1,13 +1,9 @@
-/*
-jQuery and JSON are automatically included with each app.
 
-Use the $fh.ready() (http://docs.feedhenry.com/wiki/Ready) function to trigger 
-loading the local config and binding a click event to invoke the cloud action 
-call which will return the remote config.
+var CLIENT_TOKEN = "REPLACE_ME"; //replace it with the correct auth token value of the store item
+
+/**
+* Bind functions to various events when the app is loaded
 */
-
-var CLIENT_TOKEN = "REPLACE_ME";
-
 $fh.ready(function() {
   $('#login_btn').live('click', function(){
     doFeedhenryLogin();
@@ -42,10 +38,11 @@ $fh.ready(function() {
   })
 });
 
+/**
+* get all the stored data and display it
+**/
 var update_data_info = function(){
-  console.log("update data info");
   read_all_data(function(data){
-    console.log(data);
    var data_str = "";
    if(typeof data != "object"){
      data_str = data;
@@ -54,42 +51,57 @@ var update_data_info = function(){
        data_str += key + ":" + data[key] + '\n';
      } 
    }
-   console.log(data_str);
    $('#data_info').text(data_str);
   }) 
 }
 
+/**
+* Authenticate the user using Google account
+**/
 var doGoogleLogin = function(){
   var policyId = "MyGooglePolicy";
-  $fh.auth({"policyId":policyId, "clientToken": CLIENT_TOKEN, secure: false, params: {}}, function(res){
+  $fh.auth({"policyId":policyId, "clientToken": CLIENT_TOKEN, params: {}}, function(res){
     handleLoginSuccess(res);
   }, function(err){
     handleLoginFailure(err);
   })
 }
 
-
+/**
+* Authenticate the user using FeedHenry account
+**/
 var doFeedhenryLogin = function(){
   var user_name = $('#login_name').val();
   var password = $('#login_password').val();
   var policyId = "MyFeedHenryPolicy";
-  $fh.auth({"policyId": policyId, "clientToken": CLIENT_TOKEN, secure: false, params: {"userId": user_name, "password": password}}, function(res){
+  $fh.auth({"policyId": policyId, "clientToken": CLIENT_TOKEN, params: {"userId": user_name, "password": password}}, function(res){
     handleLoginSuccess(res);
   }, function(err){
     handleLoginFailure(err);
   })
 }
 
+/**
+* Successfully logged in, show the response details and "Edit data" button
+**/
 var handleLoginSuccess = function(res){
   $.mobile.changePage($('#result_page'),  {"transition":"slide", "changeHash":true});
   $("#result_status").val("Sucess");
+  $('#session_token').val(res.sessionToken);
+  $('#session_token_field').show();
   $("#login_explain").text(JSON.stringify(res));
   $("#show_edit_data").show();
 }
 
+/**
+* Login failed, show the response details. Check the response message and see what errors they are.
+* If the message indicating purging data, remove stored data
+**/
 var handleLoginFailure = function(res){
   $.mobile.changePage($('#result_page'),  {"transition":"slide", "changeHash":true});
   $("#result_status").val("Failure");
+  $('#session_token').val("N/A");
+  $('#session_token_field').hide();
   $("#show_edit_data").hide();
   var text = "Login Failed. Error Message is : \n";
   text += res.message;
@@ -105,6 +117,9 @@ var handleLoginFailure = function(res){
   }
 }
 
+/**
+* save the data using $fh.data, save the key to an data index storage
+**/
 var save_data = function(key, value, callback){
   $fh.data({act:'load', key: 'data_keys'}, function(res){
     var data_keys = res.val;
@@ -131,6 +146,9 @@ var save_data = function(key, value, callback){
   })
 }
 
+/**
+* Read or delete all the data
+**/
 var all_data = function(action, callback){
   $fh.data({act:'load', key:'data_keys'}, function(res){
     var data_keys = res.val;
