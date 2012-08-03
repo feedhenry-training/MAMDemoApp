@@ -12,23 +12,23 @@ In this app, users can be authenticated by using their Google account or FeedHen
 
 ## Create Auth Policies
 
-- Login to the mobile application management page, click on "Auth Policies" link on the left hand side of the page, you will see a list of auth policies. 
-- Click on the "Create" button to create a new auth policy.
-- Name the policy "MyFeedHenryPolicy", and choose the type to be "FEEDHENRY" and save.
-- Create another policy, name it "MyGooglePolicy" and choose the type to be "OAUTH2". To use google OAuth, you need to authorise API access by using [Google APIs Console](https://code.google.com/apis/console/). More details about this can be found [here](http://docs.feedhenry.com/v1/oauth_info.html).
+1. Login to the mobile application management page, click on "Auth Policies" link on the left hand side of the page, you will see a list of auth policies. 
+2. Click on the "Create" button to create a new auth policy.
+3. Name the policy "MyFeedHenryPolicy", and choose the type to be "FEEDHENRY" and save.
+4. Create another policy, name it "MyGooglePolicy" and choose the type to be "OAUTH2". To use google OAuth, you need to authorise API access by using [Google APIs Console](https://code.google.com/apis/console/). More details about this can be found [here](http://docs.feedhenry.com/v1/oauth_info.html).
 
 ## Create the app
 
-* Fork this app, copy the url of the repo
-* Login to the FeedHenry platform, select "Create An App", and "Create an App from a Git repository", then fill the repo information in the next step. Following the steps in the wizard to create the app.
-* After the app is created, you will be brought to the app's management view. Select "Manage" -> "Details" option and copy the "App ID" field.
+1. Fork this app, copy the url of the repo
+2. Login to the FeedHenry platform, select "Create An App", and "Create an App from a Git repository", then fill the repo information in the next step. Following the steps in the wizard to create the app.
+3. After the app is created, you will be brought to the app's management view. Select "Manage" -> "Details" option and copy the "App ID" field.
 
 ## Create the Store Item for the App and Associate It with Auth Policies
 
-- Go back to the mobile application management page, select "Store Items" and choose to create a new one
-- You can name the store item whatever you want, paste the "App Id" value copied from previous step to the "Auth Token" field. 
-- Assign "MyFeedHenryPolicy" and "MyGooglePolicy" to the app using the Auth Policies swap selector.
-- Go back to the "Apps" tab in the studio, open the "Editor" option, and open this file: __client/default/js/init.js__. At the beginning of this file, you should find a variable defined as "CLIENT_TOKEN". Replace the value for that variable to be the "Auth Token" of the store item.
+1. Go back to the mobile application management page, select "Store Items" and choose to create a new one
+2. You can name the store item whatever you want, paste the "App Id" value copied from previous step to the "Auth Token" field. 
+3. Assign "MyFeedHenryPolicy" and "MyGooglePolicy" to the app using the Auth Policies swap selector.
+4. Go back to the "Apps" tab in the studio, open the "Editor" option, and open this file: __client/default/js/init.js__. At the beginning of this file, you should find a variable defined as "CLIENT_TOKEN". Replace the value for that variable to be the "Auth Token" of the store item.
 
 ## Build the App
 
